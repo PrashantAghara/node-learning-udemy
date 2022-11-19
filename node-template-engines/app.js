@@ -7,8 +7,15 @@ const expressHbs = require("express-handlebars");
 const app = express();
 
 //Handle bars
-app.engine("handlebars", expressHbs());
-app.set("view engine", "handlebars");
+app.engine(
+  "hbs",
+  expressHbs({
+    layoutsDir: "/views/handlebars/layouts/",
+    defaultLayout: "main-layout",
+    extName: "hbs",
+  })
+);
+app.set("view engine", "hbs");
 app.set("views", "/views/handlebars");
 //Pug
 // app.set("view engine", "pug");
