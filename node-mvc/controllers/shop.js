@@ -40,9 +40,32 @@ exports.getIndex = (req, res, next) => {
   });
 };
 
+exports.deleteCart = (req, res) => {
+  const prodId = req.body.productId;
+  Product.findById(prodId, (product) => {
+    Cart.deleteProduct(prodId, product.price);
+    res.redirect("/cart");
+  });
+};
+
 exports.getCart = (req, res, next) => {
-  Product.fetchAllProducts((products) => {
-    res.render("shop/cart", { pageTitle: "Your cart", path: "/cart" });
+  Cart.getProducts((cart) => {
+    Product.fetchAllProducts((products) => {
+      const cartProd = [];
+      for (const product of products) {
+        const cartProdData = cart.products.find(
+          (prod) => prod.id === product.id
+        );
+        if (cartProdData) {
+          cartProd.push({ productData: product, qty: cartProdData.qty });
+        }
+      }
+      res.render("shop/cart", {
+        pageTitle: "Your cart",
+        path: "/cart",
+        products: cartProd,
+      });
+    });
   });
 };
 
