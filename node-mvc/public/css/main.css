@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700");
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
 
 * {
   box-sizing: border-box;
@@ -7,16 +7,20 @@
 body {
   padding: 0;
   margin: 0;
-  font-family: "Open Sans", sans-serif;
-}
-
-.centered {
-  text-align: center;
+  font-family: 'Open Sans', sans-serif;
 }
 
 main {
   padding: 1rem;
   margin: auto;
+}
+
+form {
+  display: inline;
+}
+
+.centered {
+  text-align: center;
 }
 
 .image {
@@ -25,10 +29,6 @@ main {
 
 .image img {
   height: 100%;
-}
-
-form {
-  display: inline;
 }
 
 .main-header {
@@ -202,6 +202,17 @@ form {
 .btn:hover,
 .btn:active {
   background-color: #00695c;
+  color: white;
+}
+
+.btn.danger {
+  color: red;
+  border-color: red;
+}
+
+.btn.danger:hover,
+.btn.danger:active {
+  background: red;
   color: white;
 }
 
